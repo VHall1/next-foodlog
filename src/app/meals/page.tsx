@@ -1,13 +1,7 @@
-import { PrismaClient } from "@prisma/client";
-
-async function getMeals() {
-  const prisma = new PrismaClient();
-  const meals = await prisma.meal.findMany({ take: 10 });
-  return meals;
-}
+import { prisma } from "@/util/prisma";
 
 export default async function Meals() {
-  const meals = await getMeals();
+  const meals = await prisma.meal.findMany({ take: 10 });
 
   return (
     <div>
